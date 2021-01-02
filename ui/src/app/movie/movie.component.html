@@ -1,0 +1,70 @@
+<h2>Movies</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Watched</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let movie of activeMovies">
+    <td>{{movie._id}}</td>
+    <td>{{movie.title}}</td>
+    <td>{{movie.year}}</td>
+    <td>{{movie.watched}}</td>
+    <td>
+      <button *ngIf="!movie.watched" class="btn btn-secondary" (click)="watchedMovie(movie)">
+        <i class="fa fa-check"></i>
+      </button>
+      <button *ngIf="movie.watched" class="btn btn-success" disabled>
+        <i class="fa fa-check"></i>
+      </button>
+      <button class="btn btn-danger" (click)="deleteMovie(movie)">
+        <i class="fa fa-trash"></i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<h3>Watched</h3>
+<table class="table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Watched</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let movie of watchedMovies">
+    <td>{{movie._id}}</td>
+    <td>{{movie.title}}</td>
+    <td>{{movie.year}}</td>
+    <td>{{movie.watched}}</td>
+    <td>
+      <button *ngIf="!movie.watched" class="btn btn-secondary" (click)="watchedMovie(movie)">
+        <i class="fa fa-check"></i>
+      </button>
+      <button *ngIf="movie.watched" class="btn btn-success" disabled>
+        <i class="fa fa-check"></i>
+      </button>
+      <button class="btn btn-danger" (click)="deleteMovie(movie)">
+        <i class="fa fa-trash"></i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<h3>Add Movie</h3>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Movie Title:  <input placeholder="Title..." [(ngModel)]="movieTitle"></th>
+    <th>Movie Release Year:  <input type="number" placeholder="Year..." [(ngModel)]="movieYear"></th>
+    <th>Watched Movie:  <input type="checkbox" name="check" value="true" [(ngModel)]="movieWatched"></th>
+    <th><button class="btn btn-primary" (click)="addMovie()">Add</button></th>
+  </tr>
+  </thead>
