@@ -5,6 +5,9 @@ RUN npm install
 ENV PATH="./node_modules/.bin:$PATH" 
 COPY . ./
 RUN ng build --prod
+# Switch if you want to build a Docker image used in k8s (local + NodePort)
+# See environment.k8s.ts
+#RUN ng build --configuration k8s
 
 FROM nginx
 COPY nginx.conf /etc/nginx/nginx.conf
